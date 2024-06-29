@@ -1,4 +1,4 @@
-package hr.ericsson.demo_trello.trello;
+package hr.ericsson.sample.trello;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
