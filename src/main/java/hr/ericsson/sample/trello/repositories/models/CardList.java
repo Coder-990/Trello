@@ -6,8 +6,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-
-import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -22,11 +20,10 @@ public class CardList {
     private Long id;
     private String name;
 
-    @ManyToOne
-    @JoinColumn(name = "board_id")
-    private Board board;
-
     @OneToMany(mappedBy = "cardList", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Card> cards = new ArrayList<>();
+    private List<Card> cards;
 
+    @ManyToOne
+    @JoinColumn(name = "BOARD_ID")
+    private Board board;
 }

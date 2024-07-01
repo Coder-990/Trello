@@ -19,6 +19,6 @@ public class Card {
     private String text;
 
     @ManyToOne
-    @JoinColumn(name = "list_id")
+    @JoinColumn(name = "CARD_LIST_ID")
     private CardList cardList;
 }

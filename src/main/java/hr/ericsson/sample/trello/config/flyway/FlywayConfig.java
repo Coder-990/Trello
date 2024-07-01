@@ -6,6 +6,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 
+import java.util.Map;
+
 @Configuration
 @PropertySource(value = "file:.env")
 public class FlywayConfig {
@@ -19,10 +21,15 @@ public class FlywayConfig {
     @Value("${H2_PASSWORD}")
     private String password;
 
+    @Value("${H2_DB_SCHEMA}")
+    private String schema;
+
     @Bean(initMethod = "migrate")
     public Flyway flyway() {
         return Flyway.configure()
-                .dataSource("jdbc:h2:mem:" + dbName + ";DB_CLOSE_ON_EXIT=FALSE", username, password)
+                .dataSource("jdbc:h2:mem:" + dbName + ";DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE", username, password)
+                .schemas(schema)
+                .placeholders(Map.of("H2_DB_SCHEMA", schema, "H2_DB_NAME", dbName, "H2_USERNAME", username, "H2_PASSWORD", password))
                 .locations("classpath:db/migration")
                 .load();
     }
