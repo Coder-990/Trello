@@ -11,7 +11,7 @@ public interface CardService {
 
     Card createCard(Card card);
 
-    Card updateCard(Card card);
+    Card updateCard(Long id, Card card);
 
     void deleteCard(Long id);
 }

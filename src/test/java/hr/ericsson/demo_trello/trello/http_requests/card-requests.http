@@ -1,0 +1,31 @@
+@localServer=http://localhost:8080
+@server={{localServer}}
+@id=
+
+### Get all cart items
+GET {{localServer}}/v1/cards
+Content-Type: application/json
+
+### Get one card by the particular id
+GET {{localServer}}/v1/cards/1
+Content-Type: application/json
+
+### Create card item
+POST {{localServer}}/v1/cards
+Content-Type: application/json
+
+{
+  "text": "This is first created card. It contains some information. Das is erste carte."
+}
+
+### Update card by particular id
+PUT {{localServer}}/v1/cards/7
+Content-Type: application/json
+
+{
+  "text": "This is first modified card. It contains some information."
+}
+
+### Delete card for this particular id
+DELETE {{localServer}}/v1/cards/7
+Content-Type: application/json
