@@ -2,30 +2,30 @@
 @server={{localServer}}
 @id=
 
-### Get all cards
-GET {{localServer}}/v1/cards
+### Get all card list
+GET {{localServer}}/v1/card-list
 Content-Type: application/json
 
-### Get one card by the particular id
-GET {{localServer}}/v1/cards/1
+### Get one card list by the particular id
+GET {{localServer}}/v1/card-list/1
 Content-Type: application/json
 
-### Create card
-POST {{localServer}}/v1/cards
+### Create card list
+POST {{localServer}}/v1/card-list
 Content-Type: application/json
 
 {
   "text": "This is first created card. It contains some information. Das is erste carte."
 }
 
-### Update card by particular id
-PUT {{localServer}}/v1/cards/7
+### Update card list by particular id
+PUT {{localServer}}/v1/card-list/7
 Content-Type: application/json
 
 {
   "text": "This is first modified card. It contains some information."
 }
 
-### Delete card for this particular id
-DELETE {{localServer}}/v1/cards/7
+### Delete card list for this particular id
+DELETE {{localServer}}/v1/card-list/7
 Content-Type: application/json

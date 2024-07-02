@@ -4,7 +4,5 @@ import jakarta.validation.constraints.NotNull;
 import lombok.Builder;
 
 @Builder
-public record ModifyCardRequest(
-        @NotNull String text
-) {
+public record ModifyCardRequest(@NotNull String text) {
 }

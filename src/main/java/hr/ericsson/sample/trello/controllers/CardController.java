@@ -25,7 +25,7 @@ public class CardController {
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    public List<CardResponse> getAllCards() {
+    public List<CardResponse> fetchAllCards() {
         log.info("Fetching all cards from sample trello ...");
         var cards = cardService.getAllCards();
         var cardResponse = cardMapper.toCardListResponse(cards);
@@ -33,20 +33,20 @@ public class CardController {
         return cardResponse;
     }
 
-    @GetMapping("/v1/cards/{id}")
+    @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public CardResponse getProductById(@PathVariable Long id) {
+    public CardResponse fetchCardById(@PathVariable Long id) {
         log.info("Fetching card with id {}... ", id);
         var card = cardService.getCardById(id);
         var cardResponse = cardMapper.toCardResponse(card);
-        log.info("Fetched card for id {} and body {}", id, cardResponse);
+        log.info("Fetched card for id {} with body {}", id, cardResponse);
         return cardResponse;
     }
 
     @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE,
             consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
-    public CardResponse createCard(@Validated @RequestBody AddCardRequest addCardRequest) {
+    public CardResponse postCard(@Validated @RequestBody AddCardRequest addCardRequest) {
         log.info("Creating card with body {}...", addCardRequest);
         var card = cardMapper.toAddCard(addCardRequest);
         var savedCard = cardService.createCard(card);
@@ -58,7 +58,7 @@ public class CardController {
     @PutMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE,
             consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
-    public CardResponse updateCard(@PathVariable Long id, @Validated @RequestBody
+    public CardResponse putCard(@PathVariable Long id, @Validated @RequestBody
     ModifyCardRequest modifyCardRequest) {
         log.info("Modifying card for id: {} with body {}...", id, modifyCardRequest);
         var card = cardMapper.toModifyCard(modifyCardRequest);
@@ -70,7 +70,7 @@ public class CardController {
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteCartItem(@PathVariable Long id) {
+    public void removeCard(@PathVariable Long id) {
         log.info("Removing card with id: {}...", id);
         cardService.deleteCard(id);
         log.info("Removed card for id: {}...", id);
