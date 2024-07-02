@@ -14,14 +14,16 @@ import java.util.List;
 public interface CardListMapper {
 
     @Mapping(target = "id", ignore = true)
+    @Mapping(target = "cards", ignore = true)
     @Mapping(target = "board", ignore = true)
     CardList toAddCardList(AddCardListRequest addCardListRequest);
 
-    @Mapping(target = "board", ignore = true)
     @Mapping(target = "id", ignore = true)
+    @Mapping(target = "cards", ignore = true)
+    @Mapping(target = "board", ignore = true)
     CardList toModifyCardList(ModifyCardListRequest modifyCardListRequest);
 
-    CardListResponse toCardListResponse(CardList cards);
+    CardListResponse toCardListResponse(CardList cardList);
 
     List<CardListResponse> toListCardListResponse(List<CardList> cardList);
 }

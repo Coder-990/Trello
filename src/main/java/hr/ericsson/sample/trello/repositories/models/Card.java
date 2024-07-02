@@ -1,5 +1,6 @@
 package hr.ericsson.sample.trello.repositories.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -19,6 +20,7 @@ public class Card {
     private String text;
 
     @ManyToOne
+    @JsonBackReference
     @JoinColumn(name = "CARD_LIST_ID")
     private CardList cardList;
 }

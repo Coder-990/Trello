@@ -1,11 +1,9 @@
 package hr.ericsson.sample.trello.repositories.models;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.List;
 
@@ -21,6 +19,8 @@ public class Board {
     private Long id;
     private String name;
 
+    @JsonManagedReference
+    @ToString.Exclude
     @OneToMany(mappedBy = "board", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<CardList> cardLists;
 }
