@@ -15,7 +15,15 @@ POST {{localServer}}/v1/card-list
 Content-Type: application/json
 
 {
-  "text": "This is first created card. It contains some information. Das is erste carte."
+  "name": "This is first created card. It contains some information. Das is erste carte.",
+  "cards": [
+    {
+      "text": "This is card"
+    },
+    {
+      "text": "This is card"
+    }
+  ]
 }
 
 ### Update card list by particular id
@@ -23,7 +31,7 @@ PUT {{localServer}}/v1/card-list/7
 Content-Type: application/json
 
 {
-  "text": "This is first modified card. It contains some information."
+  "name": "This is first modified card. It contains some information."
 }
 
 ### Delete card list for this particular id

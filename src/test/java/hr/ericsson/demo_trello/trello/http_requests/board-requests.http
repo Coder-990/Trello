@@ -1,0 +1,55 @@
+@localServer=http://localhost:8080
+@server={{localServer}}
+
+### Get all boards
+GET {{localServer}}/v1/boards
+Content-Type: application/json
+
+### Get one board by the particular id
+GET {{localServer}}/v1/boards/1
+Content-Type: application/json
+
+### Create board
+POST {{localServer}}/v1/boards
+Content-Type: application/json
+
+{
+  "name": "First board",
+  "cardLists": [
+    {
+      "name": "Business cards",
+      "cards": [
+        {
+          "text": "This is first ever created"
+        },
+        {
+          "text": "This is after first ever created"
+        }
+      ]
+    },
+    {
+      "name": "Unusual cards",
+      "cards": [
+        {
+          "text": "This is second ever created"
+        },
+        {
+          "text": "This is after second ever created"
+        }
+      ]
+    }
+
+  ]
+}
+
+### Update board by particular id
+PUT {{localServer}}/v1/boards/7
+Content-Type: application/json
+
+{
+  "name": "First board updated"
+}
+
+### Delete board for this particular id
+DELETE {{localServer}}/v1/boards/7
+Content-Type: application/json

@@ -14,7 +14,6 @@ import java.util.List;
 public interface CardListMapper {
 
     @Mapping(target = "id", ignore = true)
-    @Mapping(target = "cards", ignore = true)
     @Mapping(target = "board", ignore = true)
     CardList toAddCardList(AddCardListRequest addCardListRequest);
 

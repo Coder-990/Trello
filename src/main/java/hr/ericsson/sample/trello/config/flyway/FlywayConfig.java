@@ -27,9 +27,13 @@ public class FlywayConfig {
     @Bean(initMethod = "migrate")
     public Flyway flyway() {
         return Flyway.configure()
-                .dataSource("jdbc:h2:mem:" + dbName + ";DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE", username, password)
+                .dataSource("jdbc:h2:file:./data/" + dbName + ";DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE", username, password)
                 .schemas(schema)
-                .placeholders(Map.of("H2_DB_SCHEMA", schema, "H2_DB_NAME", dbName, "H2_USERNAME", username, "H2_PASSWORD", password))
+                .placeholders(Map.of(
+                        "H2_DB_SCHEMA", schema,
+                        "H2_DB_NAME", dbName,
+                        "H2_USERNAME", username,
+                        "H2_PASSWORD", password))
                 .locations("classpath:db/migration")
                 .load();
     }
