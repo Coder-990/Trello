@@ -7,6 +7,5 @@ import lombok.Builder;
 import java.util.List;
 
 @Builder
-public record AddCardListRequest(
-        @NotNull String name, List<Card> cards) {
+public record AddCardListRequest(@NotNull String name, List<Card> cards) {
 }

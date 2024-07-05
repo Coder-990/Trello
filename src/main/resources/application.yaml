@@ -12,17 +12,7 @@ spring:
       hibernate:
         default_schema: ${H2_DB_SCHEMA}
     hibernate:
-      ddl-auto: validate
-  flyway:
-    enabled: true
-    schemas: ${H2_DB_SCHEMA}
-    baseline-on-migrate: true
-    locations: classpath:db/migration
-    placeholders:
-      H2_DB_SCHEMA: ${H2_DB_SCHEMA}
-      H2_DB_NAME: ${H2_DB_NAME}
-      H2_USERNAME: ${H2_USERNAME}
-      H2_PASSWORD: ${H2_PASSWORD}
+      ddl-auto: none
   devtools:
     restart:
       enabled: true

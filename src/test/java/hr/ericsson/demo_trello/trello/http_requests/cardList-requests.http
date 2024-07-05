@@ -18,10 +18,10 @@ Content-Type: application/json
   "name": "This is first created card. It contains some information. Das is erste carte.",
   "cards": [
     {
-      "text": "This is card"
+      "describe": "This is card"
     },
     {
-      "text": "This is card"
+      "describe": "This is card"
     }
   ]
 }

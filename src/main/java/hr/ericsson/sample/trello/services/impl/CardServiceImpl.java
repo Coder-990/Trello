@@ -32,8 +32,10 @@ public class CardServiceImpl implements CardService {
     @Override
     public Card updateCard(Long id, Card card) {
         var existingCard = getCardById(id);
-        existingCard.setText(card.getText());
+        existingCard.setName(card.getName());
+        existingCard.setDescribe(card.getDescribe());
         existingCard.setCardList(card.getCardList());
+        existingCard.setMembers(card.getMembers());
         return cardRepository.saveAndFlush(existingCard);
     }
 
