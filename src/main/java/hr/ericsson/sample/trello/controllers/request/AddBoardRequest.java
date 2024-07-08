@@ -12,7 +12,11 @@ public record AddBoardRequest(@NotNull String name, List<CardList> cardLists) {
     public record CardList(String name, List<Card> cards) {
 
         @Builder
-        public record Card(String text) {
+        public record Card(String name, String describe, List<Member> members) {
+
+            @Builder
+            public record Member(String name, String lastName, String email, String phone) {
+            }
         }
     }
 }

@@ -15,7 +15,16 @@ POST {{localServer}}/v1/cards
 Content-Type: application/json
 
 {
-  "describe": "This is first created card. It contains some information. Das is erste carte."
+  "name": "Card 10",
+  "describe": "This card is for testing",
+  "members": [
+    {
+      "name": "TestName",
+      "lastName": "TestLastName",
+      "email": "test.email@exemple.com",
+      "phone": "452547878"
+    }
+  ]
 }
 
 ### Update card by particular id
