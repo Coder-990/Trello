@@ -14,31 +14,77 @@ POST {{localServer}}/v1/boards
 Content-Type: application/json
 
 {
-  "name": "First board",
+  "name": "Project Board",
   "cardLists": [
     {
-      "name": "Business cards",
+      "name": "To Do",
       "cards": [
         {
-          "text": "This is first ever created"
+          "name": "Task 1",
+          "describe": "Description for Task 1",
+          "members": [
+            {
+              "name": "John",
+              "lastName": "Doe",
+              "email": "john.doe@example.com",
+              "phone": "1234567890"
+            },
+            {
+              "name": "Jane",
+              "lastName": "Smith",
+              "email": "jane.smith@example.com",
+              "phone": "0987654321"
+            }
+          ]
         },
         {
-          "text": "This is after first ever created"
+          "name": "Task 2",
+          "describe": "Description for Task 2",
+          "members": [
+            {
+              "name": "Alice",
+              "lastName": "Johnson",
+              "email": "alice.johnson@example.com",
+              "phone": "5555555555"
+            }
+          ]
         }
       ]
     },
     {
-      "name": "Unusual cards",
+      "name": "In Progress",
       "cards": [
         {
-          "text": "This is second ever created"
-        },
+          "name": "Task 3",
+          "describe": "Description for Task 3",
+          "members": [
+            {
+              "name": "Bob",
+              "lastName": "Brown",
+              "email": "bob.brown@example.com",
+              "phone": "6666666666"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Done",
+      "cards": [
         {
-          "text": "This is after second ever created"
+          "name": "Task 4",
+          "describe": "Description for Task 4",
+          "members": [
+            {
+              "name": "Charlie",
+              "lastName": "Davis",
+              "email": "charlie.davis@example.com",
+              "phone": "7777777777"
+            }
+          ]
         }
       ]
     }
-
   ]
 }
 

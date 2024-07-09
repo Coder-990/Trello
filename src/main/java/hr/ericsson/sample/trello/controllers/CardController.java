@@ -37,19 +37,19 @@ public class CardController {
     @ResponseStatus(HttpStatus.OK)
     public CardResponse fetchCardById(@PathVariable Long id) {
         log.info("Fetching card with id {}... ", id);
-        var card = cardService.getCardById(id);
+        var card = cardService.getCardById(id).get();
         var cardResponse = cardMapper.toCardResponse(card);
         log.info("Fetched card for id {} with body {}", id, cardResponse);
         return cardResponse;
     }
 
-    @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE,
+    @PostMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE,
             consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
-    public CardResponse postCard(@Validated @RequestBody AddCardRequest addCardRequest) {
+    public CardResponse postCard(@PathVariable Long id, @Validated @RequestBody AddCardRequest addCardRequest) {
         log.info("Creating card with body {}...", addCardRequest);
         var card = cardMapper.toAddCard(addCardRequest);
-        var savedCard = cardService.createCard(card);
+        var savedCard = cardService.createCard(card, id);
         var cardResponse = cardMapper.toCardResponse(savedCard);
         log.info("Created card for id: {} with body {}  ...", savedCard.getId(), cardResponse);
         return cardResponse;

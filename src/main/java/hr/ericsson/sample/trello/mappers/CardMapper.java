@@ -13,14 +13,13 @@ import java.util.List;
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
 public interface CardMapper {
 
-
     @Mapping(target = "id", ignore = true)
-    @Mapping(target = "cardList", ignore = true)
+    @Mapping(target = "cardLists", ignore = true)
     Card toAddCard(AddCardRequest addCardRequest);
 
     @Mapping(target = "members", ignore = true)
     @Mapping(target = "id", ignore = true)
-    @Mapping(target = "cardList", ignore = true)
+    @Mapping(target = "cardLists", ignore = true)
     Card toModifyCard(ModifyCardRequest modifyCardRequest);
 
     CardResponse toCardResponse(Card card);

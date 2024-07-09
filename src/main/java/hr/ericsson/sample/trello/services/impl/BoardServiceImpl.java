@@ -3,6 +3,7 @@ package hr.ericsson.sample.trello.services.impl;
 import hr.ericsson.sample.trello.repositories.BoardRepository;
 import hr.ericsson.sample.trello.repositories.models.Board;
 import hr.ericsson.sample.trello.services.BoardService;
+import hr.ericsson.sample.trello.services.CardListService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +14,7 @@ import java.util.List;
 public class BoardServiceImpl implements BoardService {
 
     private final BoardRepository boardRepository;
+    private final CardListService cardListService;
 
     @Override
     public List<Board> getAllBoards() {
@@ -31,10 +33,12 @@ public class BoardServiceImpl implements BoardService {
 
     @Override
     public Board updateBoard(Long id, Board board) {
-        var existingBoard = getOneById(id);
-        existingBoard.setName(board.getName());
-        existingBoard.setCardLists(board.getCardLists());
-        return boardRepository.saveAndFlush(existingBoard);
+        return boardRepository.findById(id)
+                .map(existingBoard -> {
+                    existingBoard.setName(board.getName());
+                    existingBoard.setCardLists(board.getCardLists());
+                    return boardRepository.save(existingBoard);
+                }).orElseThrow(() -> new RuntimeException("Board not found"));
     }
 
     @Override

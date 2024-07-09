@@ -3,11 +3,12 @@ package hr.ericsson.sample.trello.services;
 import hr.ericsson.sample.trello.repositories.models.CardList;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface CardListService {
     List<CardList> getAllCardList();
 
-    CardList getCardListById(Long id);
+    Optional<CardList> getCardListById(Long id);
 
     CardList createCardList(CardList card);
 

@@ -3,13 +3,14 @@ package hr.ericsson.sample.trello.services;
 import hr.ericsson.sample.trello.repositories.models.Card;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface CardService {
     List<Card> getAllCards();
 
-    Card getCardById(Long id);
+    Optional<Card> getCardById(Long id);
 
-    Card createCard(Card card);
+    Card createCard(Card card, Long id);
 
     Card updateCard(Long id, Card card);
 

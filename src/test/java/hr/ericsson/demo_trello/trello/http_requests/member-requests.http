@@ -1,0 +1,37 @@
+@localServer=http://localhost:8080
+@server={{localServer}}
+
+### Get all members list
+GET {{localServer}}/v1/members
+Content-Type: application/json
+
+### Get one member by the particular id
+GET {{localServer}}/v1/members/1
+Content-Type: application/json
+
+### Create new member
+POST {{localServer}}/v1/members
+Content-Type: application/json
+
+{
+"name": "TestName",
+"lastName": "TestLastName",
+"email": "test.email@email.com",
+"phone": "123456789"
+}
+
+### Update member by particular id
+PUT {{localServer}}/v1/members/7
+Content-Type: application/json
+
+{
+  "name": "TestName",
+  "lastName": "TestLastName",
+  "email": "test.email@email.com",
+  "phone": "123456789"
+}
+
+### Delete member for this particular id
+DELETE {{localServer}}/v1/members/7
+Content-Type: application/json
+###

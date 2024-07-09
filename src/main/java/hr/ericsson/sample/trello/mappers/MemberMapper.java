@@ -14,14 +14,14 @@ import java.util.List;
 public interface MemberMapper {
 
     @Mapping(target = "id", ignore = true)
-    @Mapping(target = "card", ignore = true)
+    @Mapping(target = "cards", ignore = true)
     Member toAddMember(AddMemberRequest addMemberRequest);
 
     @Mapping(target = "id", ignore = true)
-    @Mapping(target = "card", ignore = true)
+    @Mapping(target = "cards", ignore = true)
     Member toModifyMember(ModifyMemberRequest modifyMemberRequest);
 
     MemberResponse toMemberResponse(Member member);
 
-    List<MemberResponse> toMemberResponseList(List<Member> members);
+    List<MemberResponse> toMemberListResponse(List<Member> members);
 }

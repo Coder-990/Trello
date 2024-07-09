@@ -22,11 +22,16 @@ public class Card {
 
     @JsonManagedReference
     @ToString.Exclude
-    @OneToMany(mappedBy = "card", cascade = CascadeType.ALL, orphanRemoval = true)
+    @ManyToMany
+    @JoinTable(
+            name = "card_member",
+            joinColumns = @JoinColumn(name = "card_id"),
+            inverseJoinColumns = @JoinColumn(name = "member_id")
+    )
     private List<Member> members;
 
-    @ManyToOne
+
     @JsonBackReference
-    @JoinColumn(name = "CARD_LIST_ID")
-    private CardList cardList;
+    @ManyToMany(mappedBy = "cards", cascade = CascadeType.ALL)
+    private List<CardList> cardLists;
 }

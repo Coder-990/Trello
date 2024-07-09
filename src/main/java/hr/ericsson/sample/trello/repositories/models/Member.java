@@ -7,6 +7,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Data
 @Entity
 @Builder
@@ -16,14 +18,13 @@ public class Member {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String id;
+    private Long id;
     private String name;
     private String lastName;
     private String email;
     private String phone;
 
-    @ManyToOne
     @JsonBackReference
-    @JoinColumn(name = "CARD_ID")
-    private Card card;
+    @ManyToMany(mappedBy = "members", cascade = CascadeType.ALL)
+    private List<Card> cards;
 }

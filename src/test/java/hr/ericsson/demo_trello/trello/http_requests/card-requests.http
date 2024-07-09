@@ -7,7 +7,7 @@ GET {{localServer}}/v1/cards
 Content-Type: application/json
 
 ### Get one card by the particular id
-GET {{localServer}}/v1/cards/1
+GET {{localServer}}/v1/cards/10
 Content-Type: application/json
 
 ### Create card
@@ -15,14 +15,20 @@ POST {{localServer}}/v1/cards
 Content-Type: application/json
 
 {
-  "name": "Card 10",
-  "describe": "This card is for testing",
+  "name": "Task 1",
+  "describe": "Description for Task 1",
   "members": [
     {
-      "name": "TestName",
-      "lastName": "TestLastName",
-      "email": "test.email@exemple.com",
-      "phone": "452547878"
+      "name": "John",
+      "lastName": "Doe",
+      "email": "john.doe@example.com",
+      "phone": "1234567890"
+    },
+    {
+      "name": "Jane",
+      "lastName": "Smith",
+      "email": "jane.smith@example.com",
+      "phone": "0987654321"
     }
   ]
 }

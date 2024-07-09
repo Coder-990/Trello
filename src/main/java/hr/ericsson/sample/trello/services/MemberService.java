@@ -3,11 +3,12 @@ package hr.ericsson.sample.trello.services;
 import hr.ericsson.sample.trello.repositories.models.Member;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface MemberService {
     List<Member> getAllMembers();
 
-    Member getMemberById(Long id);
+    Optional<Member> getMemberById(Long id);
 
     Member createMember(Member member);
 

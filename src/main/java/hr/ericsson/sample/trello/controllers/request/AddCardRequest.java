@@ -6,9 +6,10 @@ import lombok.Builder;
 import java.util.List;
 
 @Builder
-public record AddCardRequest(@NotNull String name, @NotNull String describe, List<Member> members) {
 
-    @Builder
-    public record Member(String name, String lastName, String email, String phone) {
-    }
+public record AddCardRequest(
+        @NotNull String name,
+        String describe,
+        List<AddMemberRequest> members
+) {
 }

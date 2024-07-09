@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -20,8 +21,8 @@ public class MemberServiceImpl implements MemberService {
     }
 
     @Override
-    public Member getMemberById(Long id) {
-        return memberRepository.getReferenceById(id);
+    public Optional<Member> getMemberById(Long id) {
+        return memberRepository.findById(id);
     }
 
     @Override
@@ -31,13 +32,15 @@ public class MemberServiceImpl implements MemberService {
 
     @Override
     public Member updateMember(Long id, Member member) {
-        var existingCard = getMemberById(id);
-        existingCard.setName(member.getName());
-        existingCard.setLastName(member.getLastName());
-        existingCard.setEmail(member.getEmail());
-        existingCard.setPhone(member.getPhone());
-        existingCard.setCard(member.getCard());
-        return memberRepository.saveAndFlush(existingCard);
+        return memberRepository.findById(id)
+                .map(existingMember -> {
+                    existingMember.setName(member.getName());
+                    existingMember.setLastName(member.getLastName());
+                    existingMember.setEmail(member.getEmail());
+                    existingMember.setPhone(member.getPhone());
+                    existingMember.setCards(member.getCards());
+                    return memberRepository.save(existingMember);
+                }).orElseThrow(() -> new RuntimeException("Member not found"));
     }
 
     @Override
