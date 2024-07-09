@@ -10,7 +10,7 @@ public interface CardService {
 
     Optional<Card> getCardById(Long id);
 
-    Card createCard(Card card, Long id);
+    Card createCard(Card card);
 
     Card updateCard(Long id, Card card);
 

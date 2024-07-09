@@ -38,7 +38,8 @@ public class BoardController {
     public BoardResponse fetchBoardById(@PathVariable Long id) {
         log.info("Fetching board with id {}... ", id);
         var board = boardService.getOneById(id);
-        var boardResponse = boardMapper.toBoardResponse(board);
+        var boardResponse = board.map(boardMapper::toBoardResponse)
+                .orElseThrow(() -> new RuntimeException("Board not found"));
         log.info("Fetched board for id {} with body {}", id, boardResponse);
         return boardResponse;
     }

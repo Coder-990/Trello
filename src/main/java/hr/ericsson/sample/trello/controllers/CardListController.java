@@ -37,8 +37,9 @@ public class CardListController {
     @ResponseStatus(HttpStatus.OK)
     public CardListResponse fetchCardListById(@PathVariable Long id) {
         log.info("Fetching card list with id {}... ", id);
-        var cardList = cardListService.getCardListById(id).get();
-        var cardListResponse = cardListMapper.toCardListResponse(cardList);
+        var cardList = cardListService.getCardListById(id);
+        var cardListResponse = cardList.map(cardListMapper::toCardListResponse)
+                .orElseThrow(() -> new RuntimeException("Card List not found"));
         log.info("Fetched card list for id {} with body {}", id, cardListResponse);
         return cardListResponse;
     }

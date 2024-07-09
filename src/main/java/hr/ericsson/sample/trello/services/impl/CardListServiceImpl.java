@@ -3,7 +3,6 @@ package hr.ericsson.sample.trello.services.impl;
 import hr.ericsson.sample.trello.repositories.CardListRepository;
 import hr.ericsson.sample.trello.repositories.models.CardList;
 import hr.ericsson.sample.trello.services.CardListService;
-import hr.ericsson.sample.trello.services.CardService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -15,7 +14,6 @@ import java.util.Optional;
 public class CardListServiceImpl implements CardListService {
 
     private final CardListRepository cardListRepository;
-    private final CardService cardService;
 
     @Override
     public List<CardList> getAllCardList() {
@@ -34,7 +32,7 @@ public class CardListServiceImpl implements CardListService {
 
      @Override
     public CardList updateCardList(Long id, CardList cardList) {
-         return cardListRepository.findById(id)
+         return getCardListById(id)
                  .map(existingCardList -> {
                      existingCardList.setName(cardList.getName());
                      existingCardList.setCards(cardList.getCards());

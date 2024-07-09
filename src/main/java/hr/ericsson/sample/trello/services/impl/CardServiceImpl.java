@@ -3,7 +3,6 @@ package hr.ericsson.sample.trello.services.impl;
 import hr.ericsson.sample.trello.repositories.CardRepository;
 import hr.ericsson.sample.trello.repositories.models.Card;
 import hr.ericsson.sample.trello.services.CardService;
-import hr.ericsson.sample.trello.services.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -15,7 +14,6 @@ import java.util.Optional;
 public class CardServiceImpl implements CardService {
 
     private final CardRepository cardRepository;
-    private final MemberService memberService;
 
     @Override
     public List<Card> getAllCards() {
@@ -28,9 +26,7 @@ public class CardServiceImpl implements CardService {
     }
 
     @Override
-    public Card createCard(Card card, Long id) {
-        var member = memberService.getMemberById(id).orElseThrow(() -> new RuntimeException("Member not found"));
-        card.getMembers().add(member);
+    public Card createCard(Card card) {
         return cardRepository.save(card);
     }
 

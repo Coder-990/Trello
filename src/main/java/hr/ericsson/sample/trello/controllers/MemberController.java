@@ -37,8 +37,9 @@ public class MemberController {
     @ResponseStatus(HttpStatus.OK)
     public MemberResponse fetchMemberById(@PathVariable Long id) {
         log.info("Fetching member with id {}... ", id);
-        var member = memberService.getMemberById(id).get();
-        var memberResponse = memberMapper.toMemberResponse(member);
+        var member = memberService.getMemberById(id);
+        var memberResponse = member.map(memberMapper::toMemberResponse)
+                .orElseThrow(() -> new RuntimeException("Member not found"));
         log.info("Fetched member for id {} with body {}", id, memberResponse);
         return memberResponse;
     }

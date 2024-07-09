@@ -18,6 +18,17 @@ Content-Type: application/json
   "name": "Task 1",
   "describe": "Description for Task 1",
   "members": [
+  ]
+}
+
+### Update card by particular id
+PUT {{localServer}}/v1/cards/7
+Content-Type: application/json
+
+{
+  "name": "Task 1",
+  "describe": "Description for Task 1",
+  "members": [
     {
       "name": "John",
       "lastName": "Doe",
@@ -31,14 +42,6 @@ Content-Type: application/json
       "phone": "0987654321"
     }
   ]
-}
-
-### Update card by particular id
-PUT {{localServer}}/v1/cards/7
-Content-Type: application/json
-
-{
-  "describe": "This is first modified card. It contains some information."
 }
 
 ### Delete card for this particular id

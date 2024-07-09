@@ -32,7 +32,7 @@ public class MemberServiceImpl implements MemberService {
 
     @Override
     public Member updateMember(Long id, Member member) {
-        return memberRepository.findById(id)
+        return getMemberById(id)
                 .map(existingMember -> {
                     existingMember.setName(member.getName());
                     existingMember.setLastName(member.getLastName());

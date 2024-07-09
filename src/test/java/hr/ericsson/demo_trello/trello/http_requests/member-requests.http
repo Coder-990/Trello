@@ -25,13 +25,13 @@ PUT {{localServer}}/v1/members/7
 Content-Type: application/json
 
 {
-  "name": "TestName",
-  "lastName": "TestLastName",
-  "email": "test.email@email.com",
-  "phone": "123456789"
+  "name": "TestNameUpdate",
+  "lastName": "TestLastNameUpdate",
+  "email": "test.email@email.comUpdate",
+  "phone": "111111111"
 }
 
 ### Delete member for this particular id
-DELETE {{localServer}}/v1/members/7
+DELETE {{localServer}}/v1/members/3
 Content-Type: application/json
 ###
