@@ -14,9 +14,6 @@ services:
       H2_DB_NAME: ${H2_DB_NAME}
     volumes:
       - h2-data:/opt/h2-data
-      - ./db/migration/V1__create_schema.sql:/docker-entrypoint-initdb.d/V1__create_schema.sql
-      - ./db/migration/V2__create_tables.sql:/docker-entrypoint-initdb.d/V2__create_tables.sql
-      - ./db/migration/V3__insert_initial_data.sql:/docker-entrypoint-initdb.d/V3__insert_initial_data.sql
     restart: unless-stopped
     env_file:
       - .env
