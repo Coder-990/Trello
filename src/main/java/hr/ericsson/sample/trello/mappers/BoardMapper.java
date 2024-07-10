@@ -17,7 +17,6 @@ public interface BoardMapper {
     Board toAddBoard(AddBoardRequest addBoardRequest);
 
     @Mapping(target = "id", ignore = true)
-    @Mapping(target = "cardLists", ignore = true)
     Board toModifyBoard(ModifyBoardRequest modifyCardListRequest);
 
     BoardResponse toBoardResponse(Board board);

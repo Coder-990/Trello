@@ -18,7 +18,6 @@ public interface CardListMapper {
     CardList toAddCardList(AddCardListRequest addCardListRequest);
 
     @Mapping(target = "id", ignore = true)
-    @Mapping(target = "cards", ignore = true)
     @Mapping(target = "boards", ignore = true)
     CardList toModifyCardList(ModifyCardListRequest modifyCardListRequest);
 

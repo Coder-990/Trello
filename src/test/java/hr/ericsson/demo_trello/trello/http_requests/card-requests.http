@@ -17,12 +17,11 @@ Content-Type: application/json
 {
   "name": "Task 1",
   "describe": "Description for Task 1",
-  "members": [
-  ]
+  "members": []
 }
 
 ### Update card by particular id
-PUT {{localServer}}/v1/cards/7
+PUT {{localServer}}/v1/cards/5
 Content-Type: application/json
 
 {

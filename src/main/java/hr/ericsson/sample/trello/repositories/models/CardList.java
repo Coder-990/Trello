@@ -21,7 +21,7 @@ public class CardList {
 
     @JsonManagedReference
     @ToString.Exclude
-    @ManyToMany
+    @ManyToMany(cascade=CascadeType.ALL)
     @JoinTable(
             name = "card_list_card",
             joinColumns = @JoinColumn(name = "card_list_id"),

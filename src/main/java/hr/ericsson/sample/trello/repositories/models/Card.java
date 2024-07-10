@@ -22,7 +22,7 @@ public class Card {
 
     @JsonManagedReference
     @ToString.Exclude
-    @ManyToMany
+    @ManyToMany(cascade=CascadeType.ALL)
     @JoinTable(
             name = "card_member",
             joinColumns = @JoinColumn(name = "card_id"),

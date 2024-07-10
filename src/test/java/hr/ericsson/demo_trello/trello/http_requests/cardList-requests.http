@@ -16,6 +16,15 @@ Content-Type: application/json
 
 {
   "name": "To Do",
+  "cards": []
+}
+
+### Update card list by particular id
+PUT {{localServer}}/v1/card-list/33
+Content-Type: application/json
+
+{
+  "name": "To Do",
   "cards": [
     {
       "name": "Task 1",
@@ -48,14 +57,6 @@ Content-Type: application/json
       ]
     }
   ]
-}
-
-### Update card list by particular id
-PUT {{localServer}}/v1/card-list/7
-Content-Type: application/json
-
-{
-  "name": "This is first modified card. It contains some information."
 }
 
 ### Delete card list for this particular id

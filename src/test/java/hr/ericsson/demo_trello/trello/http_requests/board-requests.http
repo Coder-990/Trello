@@ -6,11 +6,22 @@ GET {{localServer}}/v1/boards
 Content-Type: application/json
 
 ### Get one board by the particular id
-GET {{localServer}}/v1/boards/1
+GET {{localServer}}/v1/boards/2
 Content-Type: application/json
 
 ### Create board
 POST {{localServer}}/v1/boards
+Content-Type: application/json
+
+{
+  "name": "Project Board",
+  "cardLists": []
+}
+
+
+
+### Update board by particular id
+PUT {{localServer}}/v1/boards/33
 Content-Type: application/json
 
 {
@@ -88,14 +99,6 @@ Content-Type: application/json
   ]
 }
 
-### Update board by particular id
-PUT {{localServer}}/v1/boards/7
-Content-Type: application/json
-
-{
-  "name": "First board updated"
-}
-
 ### Delete board for this particular id
-DELETE {{localServer}}/v1/boards/7
+DELETE {{localServer}}/v1/boards/33
 Content-Type: application/json

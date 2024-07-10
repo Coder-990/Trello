@@ -21,7 +21,7 @@ Content-Type: application/json
 }
 
 ### Update member by particular id
-PUT {{localServer}}/v1/members/7
+PUT {{localServer}}/v1/members/3
 Content-Type: application/json
 
 {
