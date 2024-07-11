@@ -1,6 +1,5 @@
 package hr.ericsson.sample.trello.repositories.models;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -24,7 +23,6 @@ public class Member {
     private String email;
     private String phone;
 
-    @JsonBackReference
     @ManyToMany(mappedBy = "members", cascade = CascadeType.ALL)
     private List<Card> cards;
 }

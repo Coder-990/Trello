@@ -20,7 +20,7 @@ Content-Type: application/json
   "members": []
 }
 
-### Update card by particular id
+### Move card by particular id and to requested card list
 PUT {{localServer}}/v1/cards/4/move-card
 Content-Type: application/json
 
@@ -30,7 +30,7 @@ Content-Type: application/json
 
 
 ### Update card by particular id
-PUT {{localServer}}/v1/cards/5
+PUT {{localServer}}/v1/cards/3
 Content-Type: application/json
 
 {

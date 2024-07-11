@@ -1,9 +1,10 @@
 package hr.ericsson.sample.trello.repositories.models;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 
@@ -20,8 +21,6 @@ public class Card {
     private String name;
     private String describe;
 
-    @JsonManagedReference
-    @ToString.Exclude
     @ManyToMany(cascade=CascadeType.ALL)
     @JoinTable(
             name = "card_member",
@@ -30,8 +29,6 @@ public class Card {
     )
     private List<Member> members;
 
-
-    @JsonBackReference
     @ManyToMany(mappedBy = "cards", cascade = CascadeType.ALL)
     private List<CardList> cardLists;
 }

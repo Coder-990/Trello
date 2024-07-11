@@ -6,7 +6,7 @@ GET {{localServer}}/v1/boards
 Content-Type: application/json
 
 ### Get one board by the particular id
-GET {{localServer}}/v1/boards/2
+GET {{localServer}}/v1/boards/3
 Content-Type: application/json
 
 ### Create board
@@ -21,7 +21,7 @@ Content-Type: application/json
 
 
 ### Update board by particular id
-PUT {{localServer}}/v1/boards/33
+PUT {{localServer}}/v1/boards/3
 Content-Type: application/json
 
 {
@@ -100,5 +100,5 @@ Content-Type: application/json
 }
 
 ### Delete board for this particular id
-DELETE {{localServer}}/v1/boards/33
+DELETE {{localServer}}/v1/boards/3
 Content-Type: application/json
