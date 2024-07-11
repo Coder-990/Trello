@@ -2,6 +2,7 @@ package hr.ericsson.sample.trello.controllers;
 
 import hr.ericsson.sample.trello.controllers.request.AddCardRequest;
 import hr.ericsson.sample.trello.controllers.request.ModifyCardRequest;
+import hr.ericsson.sample.trello.controllers.request.MoveCardRequest;
 import hr.ericsson.sample.trello.controllers.response.CardResponse;
 import hr.ericsson.sample.trello.mappers.CardMapper;
 import hr.ericsson.sample.trello.services.CardService;
@@ -67,6 +68,15 @@ public class CardController {
         var updatedCard = cardService.updateCard(id, card);
         var cardResponse = cardMapper.toCardResponse(updatedCard);
         log.info("Modified card for id: {} with body {}...", id, cardResponse);
+        return cardResponse;
+    }
+
+    @PutMapping("/{id}/move-card")
+    public CardResponse moveCardToList(@PathVariable Long id, @RequestBody MoveCardRequest moveCardRequest) {
+        log.info("Moving Card for id: {} to Card-List id : {}...", id, moveCardRequest);
+        var movedCard = cardService.moveCardToList(id, moveCardRequest.newCardListId());
+        var cardResponse = cardMapper.toCardResponse(movedCard);
+        log.info("Moved Card for id: {} to Card-List id : {}...", id, moveCardRequest);
         return cardResponse;
     }
 
