@@ -3,6 +3,7 @@ package hr.ericsson.sample.trello.controllers;
 import hr.ericsson.sample.trello.controllers.request.AddBoardRequest;
 import hr.ericsson.sample.trello.controllers.request.ModifyBoardRequest;
 import hr.ericsson.sample.trello.controllers.response.BoardResponse;
+import hr.ericsson.sample.trello.exceptions.NotFoundException;
 import hr.ericsson.sample.trello.mappers.BoardMapper;
 import hr.ericsson.sample.trello.services.BoardService;
 import lombok.RequiredArgsConstructor;
@@ -40,7 +41,7 @@ public class BoardController {
         log.info("Fetching board with id {}... ", id);
         var board = boardService.getOneById(id);
         var boardResponse = board.map(boardMapper::toBoardResponse)
-                .orElseThrow(() -> new RuntimeException("Board not found"));
+                .orElseThrow(() -> new NotFoundException(("Could not find board by this id %s").formatted(id)));
         log.info("Fetched board for id {} with body {}", id, boardResponse);
         return boardResponse;
     }

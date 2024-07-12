@@ -21,13 +21,12 @@ Content-Type: application/json
 }
 
 ### Move card by particular id and to requested card list
-PUT {{localServer}}/v1/cards/4/move-card
+PUT {{localServer}}/v1/cards/2/move-card
 Content-Type: application/json
 
 {
   "newCardListId": 2
 }
-
 
 ### Update card by particular id
 PUT {{localServer}}/v1/cards/3

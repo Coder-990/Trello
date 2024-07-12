@@ -13,6 +13,7 @@ import java.util.List;
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
 public interface CardMapper {
 
+
     @Mapping(target = "id", ignore = true)
     @Mapping(target = "cardLists", ignore = true)
     Card toAddCard(AddCardRequest addCardRequest);

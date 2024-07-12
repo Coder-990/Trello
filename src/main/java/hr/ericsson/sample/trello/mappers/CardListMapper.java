@@ -23,5 +23,5 @@ public interface CardListMapper {
 
     CardListResponse toCardListResponse(CardList cardList);
 
-    List<CardListResponse> toListCardListResponse(List<CardList> cardList);
+    List<CardListResponse> toListCardListResponse(List<CardList> cardLists);
 }

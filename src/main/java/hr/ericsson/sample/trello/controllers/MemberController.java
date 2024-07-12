@@ -3,6 +3,7 @@ package hr.ericsson.sample.trello.controllers;
 import hr.ericsson.sample.trello.controllers.request.AddMemberRequest;
 import hr.ericsson.sample.trello.controllers.request.ModifyMemberRequest;
 import hr.ericsson.sample.trello.controllers.response.MemberResponse;
+import hr.ericsson.sample.trello.exceptions.NotFoundException;
 import hr.ericsson.sample.trello.mappers.MemberMapper;
 import hr.ericsson.sample.trello.services.MemberService;
 import lombok.RequiredArgsConstructor;
@@ -40,7 +41,7 @@ public class MemberController {
         log.info("Fetching member with id {}... ", id);
         var member = memberService.getMemberById(id);
         var memberResponse = member.map(memberMapper::toMemberResponse)
-                .orElseThrow(() -> new RuntimeException("Member not found"));
+                .orElseThrow(() -> new NotFoundException(("Could not find member by this id %s").formatted(id)));
         log.info("Fetched member for id {} with body {}", id, memberResponse);
         return memberResponse;
     }

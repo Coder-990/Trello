@@ -3,6 +3,7 @@ package hr.ericsson.sample.trello.controllers;
 import hr.ericsson.sample.trello.controllers.request.AddCardListRequest;
 import hr.ericsson.sample.trello.controllers.request.ModifyCardListRequest;
 import hr.ericsson.sample.trello.controllers.response.CardListResponse;
+import hr.ericsson.sample.trello.exceptions.NotFoundException;
 import hr.ericsson.sample.trello.mappers.CardListMapper;
 import hr.ericsson.sample.trello.services.CardListService;
 import lombok.RequiredArgsConstructor;
@@ -40,7 +41,7 @@ public class CardListController {
         log.info("Fetching card list with id {}... ", id);
         var cardList = cardListService.getCardListById(id);
         var cardListResponse = cardList.map(cardListMapper::toCardListResponse)
-                .orElseThrow(() -> new RuntimeException("Card List not found"));
+                .orElseThrow(() -> new NotFoundException(("Could not find card list by this id %s").formatted(id)));
         log.info("Fetched card list for id {} with body {}", id, cardListResponse);
         return cardListResponse;
     }

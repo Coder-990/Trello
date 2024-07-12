@@ -1,5 +1,6 @@
 package hr.ericsson.sample.trello.services.impl;
 
+import hr.ericsson.sample.trello.exceptions.NotFoundException;
 import hr.ericsson.sample.trello.repositories.MemberRepository;
 import hr.ericsson.sample.trello.repositories.models.Member;
 import hr.ericsson.sample.trello.services.MemberService;
@@ -40,7 +41,7 @@ public class MemberServiceImpl implements MemberService {
                     existingMember.setPhone(member.getPhone());
                     existingMember.setCards(member.getCards());
                     return memberRepository.save(existingMember);
-                }).orElseThrow(() -> new RuntimeException("Member not found"));
+                }).orElseThrow(() -> new NotFoundException(("Could not find Member by this id %s").formatted(id)));
     }
 
     @Override

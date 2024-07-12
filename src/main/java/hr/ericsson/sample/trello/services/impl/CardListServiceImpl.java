@@ -1,5 +1,6 @@
 package hr.ericsson.sample.trello.services.impl;
 
+import hr.ericsson.sample.trello.exceptions.NotFoundException;
 import hr.ericsson.sample.trello.repositories.CardListRepository;
 import hr.ericsson.sample.trello.repositories.models.CardList;
 import hr.ericsson.sample.trello.services.CardListService;
@@ -38,7 +39,7 @@ public class CardListServiceImpl implements CardListService {
                      existingCardList.setCards(cardList.getCards());
                      existingCardList.setBoards(cardList.getBoards());
                      return cardListRepository.save(existingCardList);
-                 }).orElseThrow(() -> new RuntimeException("CardList not found"));
+                 }).orElseThrow(() -> new NotFoundException(("Could not find Board by this id %s").formatted(id)));
     }
 
     @Override

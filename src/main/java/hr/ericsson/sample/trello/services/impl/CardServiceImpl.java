@@ -1,5 +1,6 @@
 package hr.ericsson.sample.trello.services.impl;
 
+import hr.ericsson.sample.trello.exceptions.NotFoundException;
 import hr.ericsson.sample.trello.repositories.CardRepository;
 import hr.ericsson.sample.trello.repositories.models.Card;
 import hr.ericsson.sample.trello.services.CardListService;
@@ -41,15 +42,15 @@ public class CardServiceImpl implements CardService {
                     existingCard.setMembers(card.getMembers());
                     existingCard.setCardLists(card.getCardLists());
                     return cardRepository.save(existingCard);
-                }).orElseThrow(() -> new RuntimeException("Card not found"));
+                }).orElseThrow(() -> new NotFoundException(("Could not find Card by this id %s").formatted(id)));
     }
 
     @Override
     public Card moveCardToList(Long id, Long newCardListId) {
         var existingCardForMove = getCardById(id)
-                .orElseThrow(() -> new RuntimeException("Card not found"));
+                .orElseThrow(() -> new NotFoundException(("Could not find Card by this id %s").formatted(id)));
         var cardListForExistingMovedCard = cardListService.getCardListById(newCardListId)
-                .orElseThrow(() -> new RuntimeException("CardList not found"));
+                .orElseThrow(() -> new NotFoundException(("Could not find Card List by this id %s").formatted(id)));
 
         existingCardForMove.getCardLists().forEach(cardList -> {
             cardList.getCards().remove(existingCardForMove);
