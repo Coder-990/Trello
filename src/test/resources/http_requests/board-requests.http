@@ -18,8 +18,6 @@ Content-Type: application/json
   "cardLists": []
 }
 
-
-
 ### Update board by particular id
 PUT {{localServer}}/v1/boards/3
 Content-Type: application/json
