@@ -4,6 +4,7 @@ import hr.ericsson.sample.trello.controllers.request.AddCardRequest;
 import hr.ericsson.sample.trello.controllers.request.ModifyCardRequest;
 import hr.ericsson.sample.trello.controllers.request.MoveCardRequest;
 import hr.ericsson.sample.trello.controllers.response.CardResponse;
+import hr.ericsson.sample.trello.controllers.response.CardsResponse;
 import hr.ericsson.sample.trello.exceptions.NotFoundException;
 import hr.ericsson.sample.trello.mappers.CardMapper;
 import hr.ericsson.sample.trello.services.CardService;
@@ -13,8 +14,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @Slf4j
 @RestController
@@ -28,12 +27,12 @@ public class CardController {
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    public List<CardResponse> fetchAllCards() {
+    public CardsResponse fetchAllCards() {
         log.info("Fetching all cards from sample trello ...");
         var cards = cardService.getAllCards();
-        var cardResponse = cardMapper.toCardListResponse(cards);
-        log.info("Fetched all cards with body {}...", cardResponse);
-        return cardResponse;
+        var cardsResponse = cardMapper.toCardsResponse(cards);
+        log.info("Fetched all cards with body {}...", cardsResponse);
+        return cardsResponse;
     }
 
     @GetMapping("/{id}")

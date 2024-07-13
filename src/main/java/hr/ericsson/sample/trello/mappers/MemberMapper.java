@@ -3,6 +3,7 @@ package hr.ericsson.sample.trello.mappers;
 import hr.ericsson.sample.trello.controllers.request.AddMemberRequest;
 import hr.ericsson.sample.trello.controllers.request.ModifyMemberRequest;
 import hr.ericsson.sample.trello.controllers.response.MemberResponse;
+import hr.ericsson.sample.trello.controllers.response.MembersResponse;
 import hr.ericsson.sample.trello.repositories.models.Member;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -23,5 +24,14 @@ public interface MemberMapper {
 
     MemberResponse toMemberResponse(Member member);
 
-    List<MemberResponse> toMemberListResponse(List<Member> members);
+    default MembersResponse toMembersResponse(List<Member> members) {
+        var memberResponse = members.stream()
+                .map(this::toMemberResponse)
+                .toList();
+        return MembersResponse.builder()
+                .members(memberResponse)
+                .build();
+    }
+
+
 }

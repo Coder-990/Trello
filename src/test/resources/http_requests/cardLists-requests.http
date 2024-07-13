@@ -15,7 +15,7 @@ POST {{localServer}}/v1/card-list
 Content-Type: application/json
 
 {
-  "name": "To Do",
+  "name": "Done",
   "cards": []
 }
 
@@ -60,5 +60,5 @@ Content-Type: application/json
 }
 
 ### Delete card list for this particular id
-DELETE {{localServer}}/v1/card-list/7
+DELETE {{localServer}}/v1/card-lists/7
 Content-Type: application/json

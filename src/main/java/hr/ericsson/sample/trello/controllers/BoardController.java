@@ -3,6 +3,7 @@ package hr.ericsson.sample.trello.controllers;
 import hr.ericsson.sample.trello.controllers.request.AddBoardRequest;
 import hr.ericsson.sample.trello.controllers.request.ModifyBoardRequest;
 import hr.ericsson.sample.trello.controllers.response.BoardResponse;
+import hr.ericsson.sample.trello.controllers.response.BoardsResponse;
 import hr.ericsson.sample.trello.exceptions.NotFoundException;
 import hr.ericsson.sample.trello.mappers.BoardMapper;
 import hr.ericsson.sample.trello.services.BoardService;
@@ -12,8 +13,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @Slf4j
 @RestController
@@ -27,12 +26,12 @@ public class BoardController {
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    public List<BoardResponse> fetchAllBoards() {
+    public BoardsResponse fetchAllBoards() {
         log.info("Fetching all boards from sample trello ...");
         var boards = boardService.getAllBoards();
-        var boardListResponse = boardMapper.toBoardListResponse(boards);
-        log.info("Fetched all boards with body {}...", boardListResponse);
-        return boardListResponse;
+        var boardsResponse = boardMapper.toBoardsResponse(boards);
+        log.info("Fetched all boards with body {}...", boardsResponse);
+        return boardsResponse;
     }
 
     @GetMapping("/{id}")

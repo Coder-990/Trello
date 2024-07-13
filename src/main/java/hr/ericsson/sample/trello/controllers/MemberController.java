@@ -3,6 +3,7 @@ package hr.ericsson.sample.trello.controllers;
 import hr.ericsson.sample.trello.controllers.request.AddMemberRequest;
 import hr.ericsson.sample.trello.controllers.request.ModifyMemberRequest;
 import hr.ericsson.sample.trello.controllers.response.MemberResponse;
+import hr.ericsson.sample.trello.controllers.response.MembersResponse;
 import hr.ericsson.sample.trello.exceptions.NotFoundException;
 import hr.ericsson.sample.trello.mappers.MemberMapper;
 import hr.ericsson.sample.trello.services.MemberService;
@@ -12,8 +13,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @Slf4j
 @RestController
@@ -27,12 +26,12 @@ public class MemberController {
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    public List<MemberResponse> fetchAllMembers() {
+    public MembersResponse fetchAllMembers() {
         log.info("Fetching all members from sample trello ...");
         var members = memberService.getAllMembers();
-        var memberResponses = memberMapper.toMemberListResponse(members);
-        log.info("Fetched all members with body {}...", memberResponses);
-        return memberResponses;
+        var membersResponses = memberMapper.toMembersResponse(members);
+        log.info("Fetched all members with body {}...", membersResponses);
+        return membersResponses;
     }
 
     @GetMapping("/{id}")

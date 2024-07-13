@@ -3,6 +3,7 @@ package hr.ericsson.sample.trello.mappers;
 import hr.ericsson.sample.trello.controllers.request.AddCardListRequest;
 import hr.ericsson.sample.trello.controllers.request.ModifyCardListRequest;
 import hr.ericsson.sample.trello.controllers.response.CardListResponse;
+import hr.ericsson.sample.trello.controllers.response.CardListsResponse;
 import hr.ericsson.sample.trello.repositories.models.CardList;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -23,5 +24,12 @@ public interface CardListMapper {
 
     CardListResponse toCardListResponse(CardList cardList);
 
-    List<CardListResponse> toListCardListResponse(List<CardList> cardLists);
+    default CardListsResponse toCardListsResponse(List<CardList> cardLists) {
+        var cardListsResponses = cardLists.stream()
+                .map(this::toCardListResponse)
+                .toList();
+        return CardListsResponse.builder()
+                .cardLists(cardListsResponses)
+                .build();
+    }
 }

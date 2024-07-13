@@ -3,6 +3,7 @@ package hr.ericsson.sample.trello.controllers;
 import hr.ericsson.sample.trello.controllers.request.AddCardListRequest;
 import hr.ericsson.sample.trello.controllers.request.ModifyCardListRequest;
 import hr.ericsson.sample.trello.controllers.response.CardListResponse;
+import hr.ericsson.sample.trello.controllers.response.CardListsResponse;
 import hr.ericsson.sample.trello.exceptions.NotFoundException;
 import hr.ericsson.sample.trello.mappers.CardListMapper;
 import hr.ericsson.sample.trello.services.CardListService;
@@ -13,12 +14,10 @@ import org.springframework.http.MediaType;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @Slf4j
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/v1/card-list")
+@RequestMapping("/v1/card-lists")
 @CrossOrigin(origins = "http://localhost:4200")
 public class CardListController {
 
@@ -27,10 +26,10 @@ public class CardListController {
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    public List<CardListResponse> fetchAllCardList() {
-        log.info("Fetching all card list from sample trello ...");
+    public CardListsResponse fetchAllCardList() {
+        log.info("Fetching all card lists from sample trello ...");
         var cardList = cardListService.getAllCardList();
-        var cardListResponse = cardListMapper.toListCardListResponse(cardList);
+        var cardListResponse = cardListMapper.toCardListsResponse(cardList);
         log.info("Fetched all card lists with body {}...", cardListResponse);
         return cardListResponse;
     }

@@ -29,7 +29,7 @@ Content-Type: application/json
 }
 
 ### Update card by particular id
-PUT {{localServer}}/v1/cards/3
+PUT {{localServer}}/v1/cards/33
 Content-Type: application/json
 
 {
