@@ -6,7 +6,7 @@ GET {{localServer}}/v1/members
 Content-Type: application/json
 
 ### Get one member by the particular id
-GET {{localServer}}/v1/members/3
+GET {{localServer}}/v1/members/321
 Content-Type: application/json
 
 ### Create new member
@@ -14,7 +14,7 @@ POST {{localServer}}/v1/members
 Content-Type: application/json
 
 {
-"name": "TestName",
+"name": "ddd",
 "lastName": "TestLastName",
 "email": "test.email@email.com",
 "phone": "123456789"
@@ -32,6 +32,6 @@ Content-Type: application/json
 }
 
 ### Delete member for this particular id
-DELETE {{localServer}}/v1/members/3
+DELETE {{localServer}}/v1/members/321
 Content-Type: application/json
 ###
