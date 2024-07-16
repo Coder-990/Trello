@@ -18,6 +18,7 @@ public class CardServiceImpl implements CardService {
     private final CardRepository cardRepository;
     private final CardListService cardListService;
 
+
     @Override
     public List<Card> getAllCards() {
         return cardRepository.findAll();

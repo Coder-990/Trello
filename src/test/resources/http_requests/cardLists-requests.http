@@ -3,15 +3,15 @@
 @id=
 
 ### Get all card list
-GET {{localServer}}/v1/card-list
+GET {{localServer}}/v1/card-lists
 Content-Type: application/json
 
 ### Get one card list by the particular id
-GET {{localServer}}/v1/card-list/1
+GET {{localServer}}/v1/card-lists/1
 Content-Type: application/json
 
 ### Create card list
-POST {{localServer}}/v1/card-list
+POST {{localServer}}/v1/card-lists
 Content-Type: application/json
 
 {
@@ -20,7 +20,7 @@ Content-Type: application/json
 }
 
 ### Update card list by particular id
-PUT {{localServer}}/v1/card-list/33
+PUT {{localServer}}/v1/card-lists/33
 Content-Type: application/json
 
 {
@@ -60,5 +60,5 @@ Content-Type: application/json
 }
 
 ### Delete card list for this particular id
-DELETE {{localServer}}/v1/card-lists/7
+DELETE {{localServer}}/v1/card-listss/7
 Content-Type: application/json

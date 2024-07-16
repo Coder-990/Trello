@@ -14,14 +14,14 @@ POST {{localServer}}/v1/members
 Content-Type: application/json
 
 {
-"name": "ddd",
+"name":  "TestName",
 "lastName": "TestLastName",
-"email": "test.email@email.com",
-"phone": "123456789"
+"email": "test.name@gmail.com",
+"phone": "456854785"
 }
 
 ### Update member by particular id
-PUT {{localServer}}/v1/members/3
+PUT {{localServer}}/v1/members/33
 Content-Type: application/json
 
 {
@@ -32,6 +32,6 @@ Content-Type: application/json
 }
 
 ### Delete member for this particular id
-DELETE {{localServer}}/v1/members/321
+DELETE {{localServer}}/v1/members/33
 Content-Type: application/json
 ###
